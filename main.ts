@@ -32,7 +32,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Boss, function (sprite, othe
 })
 sprites.onDestroyed(SpriteKind.Boss, function (sprite) {
     bossLevel = 0
-    info.startCountdown(25)
+    info.startCountdown(30)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.EnemyFire, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
@@ -100,7 +100,7 @@ Space_Ship = sprites.create(img`
 controller.moveSprite(Space_Ship)
 Space_Ship.setPosition(75, 100)
 Space_Ship.setStayInScreen(true)
-info.startCountdown(25)
+info.startCountdown(30)
 game.onUpdateInterval(2000, function () {
     if (bossLevel) {
         ENEMYfire = sprites.createProjectileFromSprite(img`
