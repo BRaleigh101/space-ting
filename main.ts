@@ -2,9 +2,6 @@ namespace SpriteKind {
     export const EnemyFire = SpriteKind.create()
     export const Boss = SpriteKind.create()
 }
-sprites.onCreated(SpriteKind.Enemy, function (sprite) {
-	
-})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Fire_Ball = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
@@ -29,10 +26,12 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Boss, function (sprite, othe
     MyEnemy.destroy(effects.confetti, 100)
     otherSprite.destroy()
     info.changeScoreBy(3)
+    Level += 1
+    Space_Ship.sayText("Level " + Level, 2000, true)
 })
 sprites.onDestroyed(SpriteKind.Boss, function (sprite) {
     bossLevel = 0
-    info.startCountdown(30)
+    info.startCountdown(LevelLength)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.EnemyFire, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
@@ -77,7 +76,10 @@ let Boss: Sprite = null
 let bossLevel = 0
 let MyEnemy: Sprite = null
 let Fire_Ball: Sprite = null
+let Level = 0
 let Space_Ship: Sprite = null
+let LevelLength = 0
+LevelLength = 10
 scene.setBackgroundImage(assets.image`background`)
 Space_Ship = sprites.create(img`
     . . . . . . . 5 . . . . . . . . 
@@ -97,10 +99,12 @@ Space_Ship = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
-controller.moveSprite(Space_Ship)
+controller.moveSprite(Space_Ship, 100, 100)
 Space_Ship.setPosition(75, 100)
 Space_Ship.setStayInScreen(true)
-info.startCountdown(30)
+info.startCountdown(LevelLength)
+Level = 1
+Space_Ship.sayText("Level " + Level, 2000, true)
 game.onUpdateInterval(2000, function () {
     if (bossLevel) {
         ENEMYfire = sprites.createProjectileFromSprite(img`
@@ -150,7 +154,7 @@ game.onUpdateInterval(2000, function () {
             ........................
             `, SpriteKind.Enemy)
         MyEnemy.setPosition(76, -3)
-        MyEnemy.setVelocity(0, 70)
+        MyEnemy.setVelocity(0, 65 + 5 * Level)
         MyEnemy.x = randint(5, 155)
         animation.runImageAnimation(
         MyEnemy,
