@@ -2,6 +2,9 @@ namespace SpriteKind {
     export const EnemyFire = SpriteKind.create()
     export const Boss = SpriteKind.create()
 }
+scene.onHitWall(SpriteKind.Player, function (sprite, location) {
+	
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Fire_Ball = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
@@ -60,7 +63,7 @@ info.onCountdownEnd(function () {
     Boss.setBounceOnWall(true)
     Boss.setPosition(76, 10)
     bossLevel = 1
-    Boss.setVelocity(70, 0)
+    Boss.setVelocity(70, 0 + 5 * Level)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     MyEnemy.destroy(effects.confetti, 100)
@@ -71,6 +74,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     info.changeLifeBy(-1)
     otherSprite.destroy()
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Boss, function (sprite, otherSprite) {
+    info.changeLifeBy(-3)
+})
 let ENEMYfire: Sprite = null
 let Boss: Sprite = null
 let bossLevel = 0
@@ -79,7 +85,7 @@ let Fire_Ball: Sprite = null
 let Level = 0
 let Space_Ship: Sprite = null
 let LevelLength = 0
-LevelLength = 10
+LevelLength = 20
 scene.setBackgroundImage(assets.image`background`)
 Space_Ship = sprites.create(img`
     . . . . . . . 5 . . . . . . . . 
@@ -101,10 +107,18 @@ Space_Ship = sprites.create(img`
     `, SpriteKind.Player)
 controller.moveSprite(Space_Ship, 100, 100)
 Space_Ship.setPosition(75, 100)
-Space_Ship.setStayInScreen(true)
+Space_Ship.setStayInScreen(false)
 info.startCountdown(LevelLength)
 Level = 1
 Space_Ship.sayText("Level " + Level, 2000, true)
+game.onUpdate(function () {
+    if (Space_Ship.x < 0) {
+        Space_Ship.x = 160
+    }
+    if (Space_Ship.x > 160) {
+        Space_Ship.x = 0
+    }
+})
 game.onUpdateInterval(2000, function () {
     if (bossLevel) {
         ENEMYfire = sprites.createProjectileFromSprite(img`
