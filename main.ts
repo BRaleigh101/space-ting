@@ -2,8 +2,45 @@ namespace SpriteKind {
     export const EnemyFire = SpriteKind.create()
     export const Boss = SpriteKind.create()
 }
-scene.onHitWall(SpriteKind.Player, function (sprite, location) {
-	
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    Fire_Ball = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . 4 4 . . . . . . . 
+        . . . . . . 4 5 5 4 . . . . . . 
+        . . . . . . 2 5 5 2 . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, Space_Ship, -150, 0)
+    music.thump.play()
+    Fire_Ball = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . 4 4 . . . . . . . 
+        . . . . . . 4 5 5 4 . . . . . . 
+        . . . . . . 2 5 5 2 . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, Space_Ship, 150, 0)
+    music.thump.play()
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Fire_Ball = sprites.createProjectileFromSprite(img`
@@ -24,12 +61,14 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, Space_Ship, 0, -150)
+    music.thump.play()
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Boss, function (sprite, otherSprite) {
     MyEnemy.destroy(effects.confetti, 100)
     otherSprite.destroy()
     info.changeScoreBy(3)
     Level += 1
+    music.powerUp.play()
     Space_Ship.sayText("Level " + Level, 2000, true)
 })
 sprites.onDestroyed(SpriteKind.Boss, function (sprite) {
@@ -61,7 +100,7 @@ info.onCountdownEnd(function () {
         `, SpriteKind.Enemy)
     Boss.setKind(SpriteKind.Boss)
     Boss.setBounceOnWall(true)
-    Boss.setPosition(76, 10)
+    Boss.setPosition(80, 5)
     bossLevel = 1
     Boss.setVelocity(70, 0 + 5 * Level)
 })
@@ -69,13 +108,16 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     MyEnemy.destroy(effects.confetti, 100)
     otherSprite.destroy()
     info.changeScoreBy(1)
+    music.knock.play()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     otherSprite.destroy()
+    music.smallCrash.play()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Boss, function (sprite, otherSprite) {
     info.changeLifeBy(-3)
+    music.smallCrash.play()
 })
 let ENEMYfire: Sprite = null
 let Boss: Sprite = null
@@ -107,7 +149,7 @@ Space_Ship = sprites.create(img`
     `, SpriteKind.Player)
 controller.moveSprite(Space_Ship, 100, 100)
 Space_Ship.setPosition(75, 100)
-Space_Ship.setStayInScreen(false)
+Space_Ship.setStayInScreen(true)
 info.startCountdown(LevelLength)
 Level = 1
 Space_Ship.sayText("Level " + Level, 2000, true)
