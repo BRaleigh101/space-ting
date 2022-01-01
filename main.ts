@@ -129,6 +129,7 @@ let Space_Ship: Sprite = null
 let LevelLength = 0
 LevelLength = 20
 scene.setBackgroundImage(assets.image`background`)
+scroller.scrollBackgroundWithSpeed(0, 10)
 Space_Ship = sprites.create(img`
     . . . . . . . 5 . . . . . . . . 
     . . . . . . 3 a 3 . . . . . . . 

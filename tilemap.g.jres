@@ -4,6 +4,48 @@
         "mimeType": "image/x-mkcd-f4",
         "tilemapTile": true
     },
+    "tile1": {
+        "data": "hwQQABAAAAD/////////////HxEREf///x8REREREf//ERERERER8f8RERERERHxHxEREREREREfERERERERER8RERERERERHxEREREREREfERERERERER8RERERERERHxERERERERH/ERERERER8f8RERERERHx/x8REREREf///x8RERH//w==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile"
+    },
+    "tile2": {
+        "data": "hwQQABAAAAD//////////x8R////////HxH///////8fEf///////////x8RERH/////EREREfH///8RERER8f///xERERHx////EREREfH///8RERER8f///xERERHx////EREREfH///8fERER/////////////////////////////////w==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile0"
+    },
+    "tile3": {
+        "data": "hwQQABAAAAD//////////////////////////////////x///x//////H/H/Ef////8fER/x/////xEREfH///8fERER/////xERERH/////HxEREf//////HxER8f////8f8R/x/////x///xH/////////H////////////////////////w==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile1"
+    },
+    "tile4": {
+        "data": "hwQQABAAAAD//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile2"
+    },
+    "tile5": {
+        "data": "hwQQABAAAAD///////////////////////8f///////////////////////////////////////////////////////////////////////////////////////////////////////////////x/x///////////////////////////////w==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile3"
+    },
+    "tile6": {
+        "data": "hwQQABAAAAD///////////8f8f///////x/x//////////////8R/////////xH///////////////////////////////////H//////////////x//////////////////Ef////////8R////////////////H/////////H//////////w==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile4"
+    },
+    "tile7": {
+        "data": "hwQQABAAAAD///////////////////H/////////////////////////H//////////////////////////////////////////////////////////////////////////////////////////x/////////////////////////////////w==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile5"
+    },
     "level1": {
         "id": "level1",
         "mimeType": "application/mkcd-tilemap",
@@ -13,6 +55,24 @@
             "sprites.castle.rock0"
         ],
         "displayName": "level1"
+    },
+    "level2": {
+        "id": "level2",
+        "mimeType": "application/mkcd-tilemap",
+        "data": "MTAxMDAwMTAwMDAxMDkwOTA3MDcwNzA3MDcwOTA5MDkwOTA5MDkwOTAyMDEwNTA5MDkwNzA3MDcwNzA5MDkwOTA5MDgwODA1MDIwMTA5MDcwNzA3MDcwNzA5MDgwOTA1MDkwODA5MDkwMjAxMDcwNzA5MDgwODA1MDkwODA5MDcwNzA3MDkwOTAyMDEwNzA5MDUwNzA4MDgwNzA3MDgwNzA4MDcwNjA5MDIwMTA3MDcwNzA5MDcwNzA3MDgwOTA3MDkwOTA4MDkwMjAxMDkwNzA3MDcwNzA3MDgwNTA5MDkwOTA5MDgwOTAyMDEwOTA5MDkwODA4MDgwOTA5MDkwOTA1MDgwODA3MDcwMTA5MDUwODA4MDgwODA5MDkwOTA5MDcwODA3MDcwNzAxMDkwOTA4MDcwODA5MDYwOTA3MDcwNzA4MDgwNzA3MDEwOTA4MDcwNzA5MDYwNzA3MDcwNzA3MDgwNzA3MDIwMTA5MDkwNzA3MDkwNTA3MDcwNzA3MDcwNzA3MDkwMjAxMDkwNzA3MDcwNzA3MDcwODA4MDgwNzA3MDUwOTAyMDEwOTA5MDcwNzA4MDgwODA4MDcwNzA3MDkwOTA5MDIwMTA5MDUwNzA4MDcwNzA3MDcwNTA5MDcwNzA3MDcwMjA3MDcwNzA3MDgwNzA3MDkwOTA5MDkwNzA3MDcwNzAyMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMA==",
+        "tileset": [
+            "myTiles.transparency16",
+            "sprites.builtin.forestTiles9",
+            "sprites.builtin.forestTiles11",
+            "myTiles.tile1",
+            "myTiles.tile2",
+            "myTiles.tile3",
+            "myTiles.tile4",
+            "myTiles.tile5",
+            "myTiles.tile6",
+            "myTiles.tile7"
+        ],
+        "displayName": "level2"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",
