@@ -80,7 +80,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.EnemyFire, function (sprite, oth
     otherSprite.destroy()
 })
 info.onCountdownEnd(function () {
-    Boss = sprites.create(img`
+    Boss2 = sprites.create(img`
         . . 5 . 5 . . . . . . 5 . 5 . . 
         . . 5 . . 7 . . . . 7 . . 5 . . 
         . . . 7 . 7 . . . . 7 . 7 . . . 
@@ -98,11 +98,11 @@ info.onCountdownEnd(function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
-    Boss.setKind(SpriteKind.Boss)
-    Boss.setBounceOnWall(true)
-    Boss.setPosition(80, 5)
+    Boss2.setKind(SpriteKind.Boss)
+    Boss2.setBounceOnWall(true)
+    Boss2.setPosition(80, 5)
     bossLevel = 1
-    Boss.setVelocity(70, 0 + 5 * Level)
+    Boss2.setVelocity(70, 0 + 5 * Level)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     MyEnemy.destroy(effects.confetti, 100)
@@ -120,7 +120,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Boss, function (sprite, otherSpr
     music.smallCrash.play()
 })
 let ENEMYfire: Sprite = null
-let Boss: Sprite = null
+let Boss2: Sprite = null
 let bossLevel = 0
 let MyEnemy: Sprite = null
 let Fire_Ball: Sprite = null
@@ -129,7 +129,7 @@ let Space_Ship: Sprite = null
 let LevelLength = 0
 LevelLength = 20
 scene.setBackgroundImage(assets.image`background`)
-scroller.scrollBackgroundWithSpeed(0, 10)
+scroller.scrollBackgroundWithSpeed(0, 11)
 Space_Ship = sprites.create(img`
     . . . . . . . 5 . . . . . . . . 
     . . . . . . 3 a 3 . . . . . . . 
@@ -181,7 +181,7 @@ game.onUpdateInterval(2000, function () {
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
-            `, Boss, 0, 150)
+            `, Boss2, 0, 150)
         ENEMYfire.setKind(SpriteKind.EnemyFire)
     } else {
         MyEnemy = sprites.create(img`
