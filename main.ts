@@ -1,7 +1,13 @@
 namespace SpriteKind {
     export const EnemyFire = SpriteKind.create()
     export const Boss = SpriteKind.create()
+    export const Astroid = SpriteKind.create()
+    export const Alien_Hunter = SpriteKind.create()
 }
+sprites.onOverlap(SpriteKind.Alien_Hunter, SpriteKind.Player, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+    Enemy_SpaceShip.destroy(effects.starField, 2000)
+})
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     Fire_Ball = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
@@ -69,6 +75,26 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Boss, function (sprite, othe
     info.changeScoreBy(3)
     Level += 1
     music.powerUp.play()
+    Enemy_SpaceShip = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . f f f f f f f f . . . . 
+        . . . f 9 9 9 9 9 9 9 9 f . . . 
+        . . f f 9 9 9 9 9 9 9 9 f f . . 
+        f f 1 f 9 9 9 9 9 9 9 9 f 1 f . 
+        f f 1 f f f f f f f f f f 1 f f 
+        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f f 1 1 1 1 1 1 1 1 1 1 1 1 f f 
+        . f 1 1 1 2 7 5 4 8 a 1 1 1 f . 
+        . f f f f f f f f f f f f f f . 
+        . f . . . . . . . . . . . . f . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Alien_Hunter)
+    Enemy_SpaceShip.x = randint(5, 155)
+    Enemy_SpaceShip.follow(Space_Ship, 50)
     Space_Ship.sayText("Level " + Level, 2000, true)
 })
 sprites.onDestroyed(SpriteKind.Boss, function (sprite) {
@@ -124,6 +150,7 @@ let Boss2: Sprite = null
 let bossLevel = 0
 let MyEnemy: Sprite = null
 let Fire_Ball: Sprite = null
+let Enemy_SpaceShip: Sprite = null
 let Level = 0
 let Space_Ship: Sprite = null
 let LevelLength = 0
@@ -150,7 +177,7 @@ Space_Ship = sprites.create(img`
     `, SpriteKind.Player)
 controller.moveSprite(Space_Ship, 100, 100)
 Space_Ship.setPosition(75, 100)
-Space_Ship.setStayInScreen(true)
+Space_Ship.setStayInScreen(false)
 info.startCountdown(LevelLength)
 Level = 1
 Space_Ship.sayText("Level " + Level, 2000, true)
